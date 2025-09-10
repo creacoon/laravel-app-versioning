@@ -8,19 +8,19 @@ A Laravel package for managing application versioning.
 You can install the package via composer:
 
 ```bash
-composer require yourvendor/laravel-version-manager
+composer require Creacoon/laravel-app-versioning
 ```
 
 After installing, publish the configuration file:
 ``` bash
-php artisan vendor:publish --provider="YourVendor\VersionManager\ServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Creacoon\AppVersioning\VersionManagerServiceProvider" --tag="config"
 ```
 
 ## Usage
 ### Getting the current version
 ``` php
 // Using the facade
-use YourVendor\VersionManager\Facades\VersionManager;
+use Creacoon\AppVersioning\Facades\VersionManager;
 
 $version = VersionManager::getCurrentVersion();
 
@@ -30,7 +30,7 @@ php artisan version
 ### Setting a new version
 ``` php
 // Using the facade
-use YourVendor\VersionManager\Facades\VersionManager;
+use Creacoon\AppVersioning\Facades\VersionManager;
 
 VersionManager::setVersion('1.2.3');
 
