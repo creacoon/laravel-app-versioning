@@ -1,5 +1,5 @@
 <?php
 
-use Creacoon\VersionManager\Tests\TestCase;
+use Creacoon\AppVersioning\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

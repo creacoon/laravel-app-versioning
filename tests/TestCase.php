@@ -1,8 +1,8 @@
 <?php
 
-namespace Creacoon\VersionManager\Tests;
+namespace Creacoon\AppVersioning\Tests;
 
-use Creacoon\VersionManager\VersionManagerServiceProvider;
+use Creacoon\AppVersioning\VersionManagerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 
