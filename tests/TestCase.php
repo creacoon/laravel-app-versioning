@@ -2,9 +2,9 @@
 
 namespace Creacoon\VersionManager\Tests;
 
+use Creacoon\VersionManager\VersionManagerServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Creacoon\VersionManager\VersionManagerServiceProvider;
 
 class TestCase extends Orchestra
 {
