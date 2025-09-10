@@ -64,11 +64,3 @@ return [
 
 ## License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-### 4. How to Use This Package
-
-Once the package is published, a Laravel application can use it as follows:
-
-1. Install the package via Composer
-2. Publish the configuration file
-3. Use the Artisan command or the facade to manage versions
