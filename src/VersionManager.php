@@ -1,6 +1,6 @@
 <?php
 
-namespace Creacoon\VersionManager;
+namespace Creacoon\AppVersioning;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;

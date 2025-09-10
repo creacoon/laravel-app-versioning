@@ -1,16 +1,16 @@
 <?php
 
-namespace Creacoon\VersionManager\Facades;
+namespace Creacoon\AppVersioning\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Creacoon\VersionManager\VersionManager
+ * @see \Creacoon\AppVersioning\VersionManager
  */
 class VersionManager extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Creacoon\VersionManager\VersionManager::class;
+        return \Creacoon\AppVersioning\VersionManager::class;
     }
 }

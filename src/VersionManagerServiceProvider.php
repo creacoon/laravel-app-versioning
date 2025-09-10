@@ -1,10 +1,10 @@
 <?php
 
-namespace Creacoon\VersionManager;
+namespace Creacoon\AppVersioning;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Creacoon\VersionManager\Commands\VersionManagerCommand;
+use Creacoon\AppVersioning\Commands\VersionManagerCommand;
 
 class VersionManagerServiceProvider extends PackageServiceProvider
 {

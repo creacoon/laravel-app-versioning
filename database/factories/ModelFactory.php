@@ -1,6 +1,6 @@
 <?php
 
-namespace Creacoon\VersionManager\Database\Factories;
+namespace Creacoon\AppVersioning\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

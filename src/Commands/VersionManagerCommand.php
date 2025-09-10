@@ -1,8 +1,8 @@
 <?php
 
-namespace Creacoon\VersionManager\Commands;
+namespace Creacoon\AppVersioning\Commands;
 
-use Creacoon\VersionManager\Facades\VersionManager;
+use Creacoon\AppVersioning\Facades\VersionManager;
 use Illuminate\Console\Command;
 
 class VersionManagerCommand extends Command
