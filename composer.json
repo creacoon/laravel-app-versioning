@@ -1,10 +1,10 @@
 {
-    "name": "creacoon/laravel-version-manager",
+    "name": "creacoon/laravel-app-versioning",
     "description": "A Laravel package for managing application versioning",
     "keywords": [
         "creacoon",
         "laravel",
-        "laravel-verion-manager"
+        "laravel-app-versioning"
     ],
     "type": "library",
     "license": "MIT",
@@ -37,20 +37,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Creacoon\\VersionManager\\": "src/"
+            "Creacoon\\AppVersioning\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Creacoon\\VersionManager\\VersionManagerServiceProvider"
+                "Creacoon\\AppVersioning\\VersionManagerServiceProvider"
             ],
             "aliases": {
-                "VersionManager": "Creacoon\\VersionManager\\Facades\\VersionManager"
+                "VersionManager": "Creacoon\\AppVersioning\\Facades\\VersionManager"
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
