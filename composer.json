@@ -40,6 +40,11 @@
             "Creacoon\\AppVersioning\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Creacoon\\AppVersioning\\Tests\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
