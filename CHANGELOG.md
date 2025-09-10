@@ -1,3 +1,3 @@
 # Changelog
 
-All notable changes to `laravel-version-manager` will be documented in this file.
+All notable changes to `laravel-app-versioning` will be documented in this file.

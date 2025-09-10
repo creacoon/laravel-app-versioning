@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Creacoon\\VersionManager\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Creacoon\\AppVersioning\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
