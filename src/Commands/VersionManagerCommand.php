@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 class VersionManagerCommand extends Command
 {
     protected $signature = 'version {version?}';
+
     protected $description = 'Get or set the application version';
 
     public function handle(): int
@@ -17,19 +18,21 @@ class VersionManagerCommand extends Command
 
         if ($new_version) {
             if (version_compare($new_version, $current_version) <= 0) {
-                $this->error('The new version should be greater than ' . $current_version);
+                $this->error('The new version should be greater than '.$current_version);
+
                 return self::FAILURE;
             }
 
             // Update config file
-            if (!VersionManager::updateConfigFile($new_version)) {
+            if (! VersionManager::updateConfigFile($new_version)) {
                 $this->error('Could not update version in config file. Please check the format.');
+
                 return self::FAILURE;
             }
 
             // Update runtime config
             VersionManager::updateRuntimeConfig($new_version);
-            $this->info('Application version set to: ' . VersionManager::getCurrentVersion());
+            $this->info('Application version set to: '.VersionManager::getCurrentVersion());
 
             // Update changelog
             VersionManager::updateChangelog($new_version);
@@ -46,9 +49,9 @@ class VersionManagerCommand extends Command
 
             return self::SUCCESS;
         } else {
-            $this->info('Application version: ' . $current_version);
+            $this->info('Application version: '.$current_version);
+
             return self::SUCCESS;
         }
     }
 }
-

@@ -13,6 +13,7 @@ class VersionManager
     public function getCurrentVersion(): string
     {
         $config_key = config('version.config_key', 'app.version');
+
         return config($config_key);
     }
 
@@ -40,7 +41,7 @@ class VersionManager
         $config_content = File::get($config_path);
 
         $version_key = config('version.version_key', 'version');
-        $pattern = "/['|\"]" . preg_quote($version_key) . "['|\"](\s*=>\s*)['|\"](.*?)['|\"]/";
+        $pattern = "/['|\"]".preg_quote($version_key)."['|\"](\s*=>\s*)['|\"](.*?)['|\"]/";
 
         $updated_content = preg_replace(
             $pattern,
@@ -73,7 +74,7 @@ class VersionManager
     {
         $changelog_path = $this->getChangelogPath();
 
-        if (!File::exists($changelog_path)) {
+        if (! File::exists($changelog_path)) {
             return false;
         }
 
@@ -101,8 +102,9 @@ class VersionManager
         ];
 
         try {
-            if (!is_dir(base_path('.git'))) {
+            if (! is_dir(base_path('.git'))) {
                 $results['messages'][] = 'Not a git repository. Skipping git operations.';
+
                 return $results;
             }
 
@@ -112,9 +114,10 @@ class VersionManager
             $files_to_commit = $this->getFilesToCommit();
 
             // Stage files
-            exec('git add ' . implode(' ', $files_to_commit) . ' 2>&1', $output, $return_code);
+            exec('git add '.implode(' ', $files_to_commit).' 2>&1', $output, $return_code);
             if ($return_code !== 0) {
-                $results['messages'][] = 'Failed to stage files: ' . implode("\n", $output);
+                $results['messages'][] = 'Failed to stage files: '.implode("\n", $output);
+
                 return $results;
             }
 
@@ -124,7 +127,8 @@ class VersionManager
             if ($return_code === 0) {
                 $results['messages'][] = 'Git commit created successfully';
             } else {
-                $results['messages'][] = 'Failed to create commit: ' . implode("\n", $output);
+                $results['messages'][] = 'Failed to create commit: '.implode("\n", $output);
+
                 return $results;
             }
 
@@ -132,15 +136,16 @@ class VersionManager
             exec("git tag $newVersion 2>&1", $output, $return_code);
             if ($return_code === 0) {
                 exec('git describe --tags 2>&1', $describeOutput);
-                $results['messages'][] = 'Git tag created: ' . ($describeOutput[0] ?? $newVersion);
+                $results['messages'][] = 'Git tag created: '.($describeOutput[0] ?? $newVersion);
                 $results['success'] = true;
             } else {
-                $results['messages'][] = 'Failed to create tag: ' . implode("\n", $output);
+                $results['messages'][] = 'Failed to create tag: '.implode("\n", $output);
             }
 
             return $results;
         } catch (\Exception $e) {
-            $results['messages'][] = 'Git operations failed: ' . $e->getMessage();
+            $results['messages'][] = 'Git operations failed: '.$e->getMessage();
+
             return $results;
         }
     }

@@ -31,6 +31,6 @@ return [
     // Files to commit when updating the version
     'files_to_commit' => [
         'CHANGELOG.md',
-        'config/app.php'
+        'config/app.php',
     ],
 ];

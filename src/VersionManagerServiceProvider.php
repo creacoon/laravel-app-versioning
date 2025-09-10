@@ -2,9 +2,9 @@
 
 namespace Creacoon\AppVersioning;
 
+use Creacoon\AppVersioning\Commands\VersionManagerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Creacoon\AppVersioning\Commands\VersionManagerCommand;
 
 class VersionManagerServiceProvider extends PackageServiceProvider
 {
@@ -23,6 +23,6 @@ class VersionManagerServiceProvider extends PackageServiceProvider
     {
         parent::register();
 
-        $this->app->singleton('version-manager', fn () => new VersionManager());
+        $this->app->singleton('version-manager', fn () => new VersionManager);
     }
 }
