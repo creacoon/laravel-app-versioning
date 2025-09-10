@@ -1,4 +1,3 @@
-### . README.md
 # Laravel Version Manager
 
 A Laravel package for managing application versioning.
