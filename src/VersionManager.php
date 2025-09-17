@@ -12,7 +12,7 @@ class VersionManager
      */
     public function getCurrentVersion(): string
     {
-        $config_key = config('version.config_key', 'app.version');
+        $config_key = config('version-manager.config_key', 'app.version');
 
         return config($config_key);
     }
@@ -40,7 +40,7 @@ class VersionManager
         $config_path = $this->getConfigPath();
         $config_content = File::get($config_path);
 
-        $version_key = config('version.version_key', 'version');
+        $version_key = config('version-manager.version_key', 'version');
         $pattern = "/['|\"]".preg_quote($version_key)."['|\"](\s*=>\s*)['|\"](.*?)['|\"]/";
 
         $updated_content = preg_replace(
@@ -61,7 +61,7 @@ class VersionManager
      */
     public function updateRuntimeConfig(string $newVersion): bool
     {
-        $config_key = config('version.config_key', 'app.version');
+        $config_key = config('version-manager.config_key', 'app.version');
         app()['config']->set($config_key, $newVersion);
 
         return config($config_key) === $newVersion;
@@ -79,7 +79,7 @@ class VersionManager
         }
 
         $changelog_content = File::get($changelog_path);
-        $unreleased_pattern = config('version.unreleased_pattern', '## [Unreleased]');
+        $unreleased_pattern = config('version-manager.unreleased_pattern', '## [Unreleased]');
 
         $date = Carbon::now()->toDateString();
         $updated_changelog = str_replace(
@@ -122,7 +122,7 @@ class VersionManager
             }
 
             // Commit changes
-            $commit_message = config('version.commit_message', 'chg: dev: Version set to');
+            $commit_message = config('version-manager.commit_message', 'chg: dev: Version set to');
             exec("git commit -m '$commit_message $newVersion' 2>&1", $output, $return_code);
             if ($return_code === 0) {
                 $results['messages'][] = 'Git commit created successfully';
@@ -155,7 +155,7 @@ class VersionManager
      */
     protected function getConfigPath(): string
     {
-        return config('version.config_path');
+        return config('version-manager.config_path');
     }
 
     /**
@@ -163,7 +163,7 @@ class VersionManager
      */
     protected function getChangelogPath(): string
     {
-        return config('version.changelog_path');
+        return config('version-manager.changelog_path');
     }
 
     /**
@@ -171,6 +171,6 @@ class VersionManager
      */
     protected function getFilesToCommit(): array
     {
-        return config('version.files_to_commit');
+        return config('version-manager.files_to_commit');
     }
 }
