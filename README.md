@@ -7,7 +7,7 @@ A Laravel package for managing application versioning.
 You can install the package via composer:
 
 ```bash
-composer require Creacoon/laravel-app-versioning
+composer require creacoon/laravel-app-versioning
 ```
 
 After installing, publish the configuration file:
