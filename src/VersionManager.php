@@ -59,7 +59,7 @@ class VersionManager
         if (preg_match($pattern, $content)) {
             $updated_content = preg_replace(
                 $pattern,
-                '${1}' . $newVersion,
+                '${1}'.$newVersion,
                 $content
             );
         } else {
