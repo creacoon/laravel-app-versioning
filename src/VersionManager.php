@@ -28,8 +28,53 @@ class VersionManager
             return false;
         }
 
-        return $this->updateConfigFile($newVersion) &&
-            $this->updateRuntimeConfig($newVersion);
+        if (config('version-manager.use_environment_variable_for_version')) {
+            return $this->updateEnvironmentFile($newVersion) &&
+                $this->updateRuntimeConfig($newVersion);
+        } else {
+            return $this->updateConfigFile($newVersion) &&
+                $this->updateRuntimeConfig($newVersion);
+        }
+    }
+
+    public function updateEnvironmentFile(string $newVersion): bool
+    {
+        $env_variable = config('version-manager.use_environment_variable_for_version');
+
+        if (empty($env_variable)) {
+            return false;
+        }
+
+        $env_path = base_path('.env');
+
+        if (! File::exists($env_path)) {
+            return false;
+        }
+
+        $content = File::get($env_path);
+
+        $key = preg_quote($env_variable, '/');
+        $pattern = "/^($key\s*=\s*)(.*)$/m";
+
+        if (preg_match($pattern, $content)) {
+            $updated_content = preg_replace(
+                $pattern,
+                '${1}'.$newVersion,
+                $content
+            );
+        } else {
+            $updated_content = $content;
+            if (! str_ends_with($updated_content, "\n") && strlen($updated_content) > 0) {
+                $updated_content .= "\n";
+            }
+            $updated_content .= "$env_variable=$newVersion";
+        }
+
+        if ($updated_content === $content) {
+            return true;
+        }
+
+        return (bool) File::put($env_path, $updated_content);
     }
 
     /**

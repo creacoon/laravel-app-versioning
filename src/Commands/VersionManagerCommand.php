@@ -24,15 +24,11 @@ class VersionManagerCommand extends Command
             }
 
             // Update config file
-            if (! VersionManager::updateConfigFile($new_version)) {
+            if (! VersionManager::setVersion($new_version)) {
                 $this->error('Could not update version in config file. Please check the format.');
 
                 return self::FAILURE;
             }
-
-            // Update runtime config
-            VersionManager::updateRuntimeConfig($new_version);
-            $this->info('Application version set to: '.VersionManager::getCurrentVersion());
 
             // Update changelog
             VersionManager::updateChangelog($new_version);
