@@ -18,6 +18,9 @@ return [
 
     // Path to the config file
     'config_path' => config_path('app.php'),
+    
+    // Instead of modifying the config file, use an environment variable (specify variable)
+    'use_environment_variable_for_version' => null,
 
     // Path to the changelog file
     'changelog_path' => base_path('CHANGELOG.md'),

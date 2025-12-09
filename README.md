@@ -45,21 +45,7 @@ The package will:
 5. Create a git tag for the new version
 
 ## Configuration
-You can customize the package behavior by modifying the `config/version.php` file:
-``` php
-return [
-    'config_key' => 'app.version',
-    'version_key' => 'version',
-    'config_path' => config_path('app.php'),
-    'changelog_path' => base_path('CHANGELOG.md'),
-    'unreleased_pattern' => '## [Unreleased]',
-    'commit_message' => 'chg: dev: Version set to',
-    'files_to_commit' => [
-        'CHANGELOG.md',
-        'config/app.php'
-    ],
-];
-```
+You can customize the package behavior by modifying the `config/version-manager.php` file.
 
 ## License
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
